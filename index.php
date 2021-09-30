@@ -1,10 +1,14 @@
+<?php
+    include ('settings.php')
+?>
+
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>19081010010 | Raviy Bayu Setiaji</title>
+    <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
@@ -40,7 +44,7 @@
         <div class="max-width">
             <div class="home-content">
                 <div class="text-1">Hello, my name is</div>
-                <div class="text-2">Raviy Bayu Setiaji</div>
+                <div class="text-2"><?php echo $fname; ?></div>
                 <div class="text-3">And I'm a <span class="typing"></span></div>
             </div>
         </div>
@@ -52,16 +56,11 @@
             <h2 class="title">About me</h2>
             <div class="about-content">
                 <div class="column left">
-                    <img src="images/bayu.jpg" alt="">
+                    <img src="<?php echo $profil; ?>" alt="">
                 </div>
                 <div class="column right">
-                    <div class="text">I'm Bayu and I'm a <span class="typing-2"></span></div>
-                    <p>Saya adalah anak ke 5 dari 5 bersaudara. 
-                       Saya sekarang berumur 21 tahun, sedang berkuliah di UPN "Veteran" Jawa Timur.
-                       Saya menempuh semester 5 di program studi Informatika. 
-                       Saya memiliki hobi, yaitu : bermain game, memancing, badminton, dan sepak bola. 
-                       Saya bertempat tinggal di Sidoarjo Jawa Timur.
-                    </p>
+                    <div class="text">I'm <?php echo $panggilan; ?> and I'm a <span class="typing-2"></span></div>
+                    <p><?php echo $descAbout; ?></p>
                 </div>
             </div>
         </div>
@@ -76,27 +75,27 @@
                     <div class="box">
                         <i class="fas fa-graduation-cap"></i>
                         <div class="text">SD</div>
-                        <p>Tempat : SDN Wadungasih I</p>
-                        <p>Lama Studi : 6 Tahun</p>
-                        <p>Lulus Tahun : 2013</p>
+                        <?php foreach($studySD as $x => $val){ ?>
+                            <p><?php echo $x; ?> : <?php echo $val; ?></p>
+                        <?php }?>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
                         <i class="fas fa-graduation-cap"></i>
                         <div class="text">SMP</div>
-                        <p>Tempat : SMPN 1 Buduran</p>
-                        <p>Lama Studi : 3 Tahun</p>
-                        <p>Lulus Tahun : 2016</p>
+                        <?php foreach($studySMP as $x => $val){ ?>
+                            <p><?php echo $x; ?> : <?php echo $val; ?></p>
+                        <?php }?>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
                         <i class="fas fa-graduation-cap"></i>
                         <div class="text">SMK</div>
-                        <p>Tempat : SMKN 2 Buduran</p>
-                        <p>Lama Studi : 3 Tahun</p>
-                        <p>Lulus Tahun : 2019</p>
+                        <?php foreach($studySMK as $x => $val){ ?>
+                            <p><?php echo $x; ?> : <?php echo $val; ?></p>
+                        <?php }?>
                     </div>
                 </div>
                </div>
@@ -111,11 +110,7 @@
             <div class="skills-content">
                 <div class="column left">
                     <div class="text">My Creative Skills</div>
-                    <p>
-                        Bahasa pemrograman yang sebelumnya sudah saya pelajari.
-                        Saya belajar mulai dari jenjang sebelumnya di Sekolah Menengah Kejuruan dan Universitas. 
-                        Saya juga belajar dari luar kegiatan akademik. 
-                    </p>
+                    <p><?php echo $descSkill; ?></p>
                 </div>
                 <div class="column right">
                     <div class="bars">
@@ -165,50 +160,50 @@
             <div class="carousel owl-carousel">
                 <div class="card">
                     <div class="box">
-                        <img src="images/dz.jpeg" alt="">
-                        <div class="text">M. Ilham Dzulfikar</div>
-                        <p>Universitas Muhammadiyah Sidoarjo</p>
-                        <p>Sidoarjo</p>
+                        <img src="<?php echo $dz['foto']; ?>" alt="">
+                        <div class="text"><?php echo $dz['name']; ?></div>
+                        <p><?php echo $dz['univ']; ?></p>
+                        <p><?php echo $dz['asal']; ?></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
-                        <img src="images/aan.jpg" alt="">
-                        <div class="text">Aan Evian Nanda</div>
-                        <p>UPN "Veteran" Jawa Timur</p>
-                        <p>Magetan</p>
+                        <img src="<?php echo $aan['foto']; ?>" alt="">
+                        <div class="text"><?php echo $aan['name']; ?></div>
+                        <p><?php echo $aan['univ']; ?></p>
+                        <p><?php echo $aan['asal']; ?></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
-                        <img src="images/alwin.jpg" alt="">
-                        <div class="text">M. Izdihar Alwin</div>
-                        <p>UPN "Veteran" Jawa Timur</p>
-                        <p>Kupang</p>
+                        <img src="<?php echo $alwin['foto']; ?>" alt="">
+                        <div class="text"><?php echo $alwin['name']; ?></div>
+                        <p><?php echo $alwin['univ']; ?></p>
+                        <p><?php echo $alwin['asal']; ?></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
-                        <img src="images/nando.jpeg" alt="">
-                        <div class="text">Muhammad Alfyando</div>
-                        <p>UPN "Veteran" Jawa Timur</p>
-                        <p>Nganjuk</p>
+                        <img src="<?php echo $nando['foto']; ?>" alt="">
+                        <div class="text"><?php echo $nando['name']; ?></div>
+                        <p><?php echo $nando['univ']; ?></p>
+                        <p><?php echo $nando['asal']; ?></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
-                        <img src="images/indra.jpeg" alt="">
-                        <div class="text">Indra Arsy Kaloka</div>
-                        <p>UNTAG Surabaya</p>
-                        <p>Sidoarjo</p>
+                        <img src="<?php echo $indra['foto']; ?>" alt="">
+                        <div class="text"><?php echo $indra['name']; ?></div>
+                        <p><?php echo $indra['univ']; ?></p>
+                        <p><?php echo $indra['asal']; ?></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
-                        <img src="images/diva.jpg" alt="">
-                        <div class="text">Fatwa Zuhri D. P.</div>
-                        <p>UPN "Veteran" Jawa Timur</p>
-                        <p>Lamongan</p>
+                        <img src="<?php echo $diva['foto']; ?>" alt="">
+                        <div class="text"><?php echo $diva['name']; ?></div>
+                        <p><?php echo $diva['univ']; ?></p>
+                        <p><?php echo $diva['asal']; ?></p>
                     </div>
                 </div>
             </div>
@@ -226,28 +221,28 @@
                             <i class="fas fa-user"></i>
                             <div class="info">
                                 <div class="head">Name</div>
-                                <div class="sub-title">Raviy Bayu Setiaji</div>
+                                <div class="sub-title"><?php echo $fname; ?></div>
                             </div>
                         </div>
                         <div class="row">
                             <i class="fas fa-map-marker-alt"></i>
                             <div class="info">
                                 <div class="head">Address</div>
-                                <div class="sub-title">Prasung Tani RT 01. RW 01. Kec. Buduran Kab. Sidoarjo Jawa Timur</div>
+                                <div class="sub-title"><?php echo $address; ?></div>
                             </div>
                         </div>
                         <div class="row">
                             <i class="fab fa-instagram"></i>
                             <div class="info">
                                 <div class="head">Instagram</div>
-                                <div class="sub-title"><a href="https://www.instagram.com/raviy_bayu/" style="color: black;">@raviy_bayu</a></div>
+                                <div class="sub-title"><a href="<?php echo $instagram; ?>" style="color: black;">@raviy_bayu</a></div>
                             </div>
                         </div>
                         <div class="row">
                             <i class="fas fa-envelope"></i>
                             <div class="info">
                                 <div class="head">Email</div>
-                                <div class="sub-title">bayu.setiaji709@gmail.com</div>
+                                <div class="sub-title"><?php echo $email; ?></div>
                             </div>
                         </div>
                     </div>
