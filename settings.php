@@ -1,5 +1,8 @@
 <?php
 
+    // title page
+    $title = "19081010010 | Raviy Bayu Setiaji";
+
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -13,11 +16,11 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $sql = "SELECT * FROM biodata WHERE id=1";
-    $result = $conn->query($sql);
+    $sqlBiodata = "SELECT * FROM biodata WHERE id=1";
+    $resultBiodata = $conn->query($sqlBiodata);
 
-    if ($result->num_rows > 0){
-        while($row = $result->fetch_assoc()){
+    if ($resultBiodata->num_rows > 0){
+        while($row = $resultBiodata->fetch_assoc()){
             $name = $row['name'];
             $profile = $row['profil'];
             $sName = $row['short_name'];
@@ -25,21 +28,31 @@
             $instagram = $row['instagram'];
             $alamat = $row['alamat'];
         }
-    } 
-
-    // title page
-    $title = "19081010010 | Raviy Bayu Setiaji";
-
-    // biodata
-
-    $descAbout = "Saya adalah anak ke 5 dari 5 bersaudara. Saya sekarang berumur 21 tahun, sedang berkuliah di UPN Veteran Jawa Timur. Saya menempuh semester 5 di program studi Informatika. Saya memiliki hobi, yaitu : bermain game, memancing, badminton, dan sepak bola. Saya bertempat tinggal di Sidoarjo Jawa Timur.";
+    }
     
-    // array for study
-    $studySD = array("Tempat" => "SDN Wadungasih I", "Lama Studi" => "6 Tahun", "Tahun Lulus" => "2013");
-    $studySMP = array("Tempat" => "SMPN 1 Buduran", "Lama Studi" => "3 Tahun", "Tahun Lulus" => "2016");
-    $studySMK = array("Tempat" => "SMKN 2 Buduran", "Lama Studi" => "3 Tahun", "Tahun Lulus" => "2019");
+    $sqlAbout = "SELECT * FROM description WHERE id=1";
+    $resultAbout = $conn->query($sqlAbout);
 
-    $descSkill = "Bahasa pemrograman yang sebelumnya sudah saya pelajari. Saya belajar mulai dari jenjang sebelumnya di Sekolah Menengah Kejuruan dan Universitas. Saya juga belajar dari luar kegiatan akademik.";
+    if ($resultAbout->num_rows > 0){
+        while($row = $resultAbout->fetch_assoc()){
+            $descAbout = $row['description'];
+        }
+    }
+
+    $sqlSkill = "SELECT * FROM description WHERE id=2";
+    $resultSkill = $conn->query($sqlSkill);
+
+    if ($resultSkill->num_rows > 0){
+        while($row = $resultSkill->fetch_assoc()){
+            $descSkill = $row['description'];
+        }
+    }
+
+    $sqlStudi = "SELECT * FROM studi";
+    $resultStudi = $conn->query($sqlStudi);
+
+    $sqlFriends = "SELECT * FROM teman";
+    $resultFriends = $conn->query($sqlFriends);
 
     // univ UPN 
     $univ = "UPN Veteran Jawa Timur";

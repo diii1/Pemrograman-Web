@@ -71,34 +71,23 @@
         <div class="max-width">
             <h2 class="title">My Study</h2>
             <div class="serv-content">
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div class="text">SD</div>
-                        <?php foreach($studySD as $x => $val){ ?>
-                            <p><?php echo $x; ?> : <?php echo $val; ?></p>
-                        <?php }?>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div class="text">SMP</div>
-                        <?php foreach($studySMP as $x => $val){ ?>
-                            <p><?php echo $x; ?> : <?php echo $val; ?></p>
-                        <?php }?>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div class="text">SMK</div>
-                        <?php foreach($studySMK as $x => $val){ ?>
-                            <p><?php echo $x; ?> : <?php echo $val; ?></p>
-                        <?php }?>
-                    </div>
-                </div>
-               </div>
+                <?php 
+                    if ($resultStudi->num_rows > 0){
+                        while($row = $resultStudi->fetch_assoc()){
+                ?>
+                            <div class="card">
+                                <div class="box">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <div class="text"><?php echo $row['jenjang']; ?></div>    
+                                    <p>Tempat : <?php echo $row['tempat']; ?></p>
+                                    <p>Lama Studi : <?php echo $row['waktu']; ?></p>
+                                    <p>Tahun Lulus : <?php echo $row['tahun_lulus']; ?></p>
+                                </div>
+                            </div>          
+                <?php
+                        }
+                    }
+                ?>
             </div>
         </div>
     </section>
@@ -158,54 +147,22 @@
         <div class="max-width">
             <h2 class="title">My Friends</h2>
             <div class="carousel owl-carousel">
-                <div class="card">
-                    <div class="box">
-                        <img src="<?php echo $dz['foto']; ?>" alt="">
-                        <div class="text"><?php echo $dz['name']; ?></div>
-                        <p><?php echo $dz['univ']; ?></p>
-                        <p><?php echo $dz['asal']; ?></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="<?php echo $aan['foto']; ?>" alt="">
-                        <div class="text"><?php echo $aan['name']; ?></div>
-                        <p><?php echo $aan['univ']; ?></p>
-                        <p><?php echo $aan['asal']; ?></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="<?php echo $alwin['foto']; ?>" alt="">
-                        <div class="text"><?php echo $alwin['name']; ?></div>
-                        <p><?php echo $alwin['univ']; ?></p>
-                        <p><?php echo $alwin['asal']; ?></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="<?php echo $nando['foto']; ?>" alt="">
-                        <div class="text"><?php echo $nando['name']; ?></div>
-                        <p><?php echo $nando['univ']; ?></p>
-                        <p><?php echo $nando['asal']; ?></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="<?php echo $indra['foto']; ?>" alt="">
-                        <div class="text"><?php echo $indra['name']; ?></div>
-                        <p><?php echo $indra['univ']; ?></p>
-                        <p><?php echo $indra['asal']; ?></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="<?php echo $diva['foto']; ?>" alt="">
-                        <div class="text"><?php echo $diva['name']; ?></div>
-                        <p><?php echo $diva['univ']; ?></p>
-                        <p><?php echo $diva['asal']; ?></p>
-                    </div>
-                </div>
+                <?php
+                    if ($resultFriends->num_rows > 0){
+                        while($row = $resultFriends->fetch_assoc()){
+                ?>
+                            <div class="card">
+                                <div class="box">
+                                    <img src="<?php echo $row['foto']; ?>" alt="">
+                                    <div class="text"><?php echo $row['name']; ?></div>
+                                    <p><?php echo $row['universitas']; ?></p>
+                                    <p><?php echo $row['kota_asal']; ?></p>
+                                </div>
+                            </div>                        
+                <?php
+                        }
+                    }
+                ?>
             </div>
         </div>
     </section>
