@@ -1,6 +1,5 @@
 <?php
     include ('settings.php');
-    include ('conn.php');
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +44,13 @@
         <div class="max-width">
             <div class="home-content">
                 <div class="text-1">Hello, my name is</div>
-                <div class="text-2"><?php echo $fname; ?></div>
+                <?php
+                    if ($result->num_rows > 0){
+                        while($row = $result->fetch_assoc()){
+                            echo '<div class="text-2">'.$row['name'].'</div>';
+                        }
+                    } 
+                ?>
                 <div class="text-3">And I'm a <span class="typing"></span></div>
             </div>
         </div>

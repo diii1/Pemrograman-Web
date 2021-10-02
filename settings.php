@@ -10,9 +10,12 @@
 
     // Check connection
     if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+        die("Connection failed: " . $conn->connect_error);
     } 
-    
+
+    $sql = "SELECT * FROM biodata WHERE id = 1";
+    $result = $conn->query($sql);
+
     // title page
     $title = "19081010010 | Raviy Bayu Setiaji";
 
