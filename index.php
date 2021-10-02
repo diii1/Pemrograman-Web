@@ -1,5 +1,6 @@
 <?php
-    include ('settings.php')
+    include ('settings.php');
+    include ('conn.php');
 ?>
 
 <!DOCTYPE html>
