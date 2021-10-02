@@ -44,13 +44,7 @@
         <div class="max-width">
             <div class="home-content">
                 <div class="text-1">Hello, my name is</div>
-                <?php
-                    if ($result->num_rows > 0){
-                        while($row = $result->fetch_assoc()){
-                            echo '<div class="text-2">'.$row['name'].'</div>';
-                        }
-                    } 
-                ?>
+                <div class="text-2"><?php echo $name; ?></div>
                 <div class="text-3">And I'm a <span class="typing"></span></div>
             </div>
         </div>
@@ -62,10 +56,10 @@
             <h2 class="title">About me</h2>
             <div class="about-content">
                 <div class="column left">
-                    <img src="<?php echo $profil; ?>" alt="">
+                    <img src="<?php echo $profile; ?>" alt="">
                 </div>
                 <div class="column right">
-                    <div class="text">I'm <?php echo $panggilan; ?> and I'm a <span class="typing-2"></span></div>
+                    <div class="text">I'm <?php echo $sName; ?> and I'm a <span class="typing-2"></span></div>
                     <p><?php echo $descAbout; ?></p>
                 </div>
             </div>
@@ -227,14 +221,14 @@
                             <i class="fas fa-user"></i>
                             <div class="info">
                                 <div class="head">Name</div>
-                                <div class="sub-title"><?php echo $fname; ?></div>
+                                <div class="sub-title"><?php echo $name; ?></div>
                             </div>
                         </div>
                         <div class="row">
                             <i class="fas fa-map-marker-alt"></i>
                             <div class="info">
                                 <div class="head">Address</div>
-                                <div class="sub-title"><?php echo $address; ?></div>
+                                <div class="sub-title"><?php echo $alamat; ?></div>
                             </div>
                         </div>
                         <div class="row">
@@ -281,7 +275,7 @@
 
     <!-- footer section start -->
     <footer>
-        <span>Created By <a href="#">Raviy Bayu Setiaji</a> | <span class="far fa-copyright"></span> 2021 </span>
+        <span>Created By <a href="#"><?php echo $name; ?></a> | <span class="far fa-copyright"></span> 2021 </span>
     </footer>
 
     <script src="script.js"></script>

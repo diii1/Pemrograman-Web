@@ -13,19 +13,24 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $sql = "SELECT * FROM biodata WHERE id = 1";
+    $sql = "SELECT * FROM biodata WHERE id=1";
     $result = $conn->query($sql);
+
+    if ($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            $name = $row['name'];
+            $profile = $row['profil'];
+            $sName = $row['short_name'];
+            $email = $row['email'];
+            $instagram = $row['instagram'];
+            $alamat = $row['alamat'];
+        }
+    } 
 
     // title page
     $title = "19081010010 | Raviy Bayu Setiaji";
 
     // biodata
-    $profil = "images/bayu.jpg";
-    $fname = "Raviy Bayu Setiaji";
-    $panggilan = "Bayu";
-    $email = "bayu.setiaji709@gmail.com";
-    $instagram = "https://www.instagram.com/raviy_bayu/";
-    $address = "Prasung Tani RT 01. RW 01. Kec. Buduran Kab. Sidoarjo Jawa Timur";
 
     $descAbout = "Saya adalah anak ke 5 dari 5 bersaudara. Saya sekarang berumur 21 tahun, sedang berkuliah di UPN Veteran Jawa Timur. Saya menempuh semester 5 di program studi Informatika. Saya memiliki hobi, yaitu : bermain game, memancing, badminton, dan sepak bola. Saya bertempat tinggal di Sidoarjo Jawa Timur.";
     
