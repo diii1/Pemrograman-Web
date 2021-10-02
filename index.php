@@ -102,41 +102,21 @@
                     <p><?php echo $descSkill; ?></p>
                 </div>
                 <div class="column right">
-                    <div class="bars">
-                        <div class="info">
-                            <span>HTML & CSS</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="line html"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>PHP</span>
-                            <span>65%</span>
-                        </div>
-                        <div class="line css"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>JavaScript</span>
-                            <span>50%</span>
-                        </div>
-                        <div class="line js"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>MySql</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="line php"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>Golang</span>
-                            <span>30%</span>
-                        </div>
-                        <div class="line mysql"></div>
-                    </div>
+                    <?php 
+                        if ($resultCreativeSkill->num_rows > 0){
+                            while($row = $resultCreativeSkill->fetch_assoc()){
+                    ?>
+                                <div class="bars">
+                                    <div class="info">
+                                        <span><?php echo $row['name']; ?></span>
+                                        <span><?php echo $row['persen_val']; ?></span>
+                                    </div>
+                                    <div class="<?php echo $row['class']; ?>"></div>
+                                </div>          
+                    <?php
+                            }
+                        }
+                    ?>
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 <?php
-
     // title page
     $title = "19081010010 | Raviy Bayu Setiaji";
 
@@ -54,14 +53,6 @@
     $sqlFriends = "SELECT * FROM teman";
     $resultFriends = $conn->query($sqlFriends);
 
-    // univ UPN 
-    $univ = "UPN Veteran Jawa Timur";
-
-    // array for my friends 
-    $dz = array("foto" => "images/dz.jpeg", "name" => "M. Ilham Dzulfikar", "univ" => "Universitas Muhammadiyah Sidoarjo", "asal" => "Sidoarjo");
-    $aan = array("foto" => "images/aan.jpg", "name" => "Aan Evian Nanda", "univ" => $univ, "asal" => "Magetan");
-    $alwin = array("foto" => "images/alwin.jpg", "name" => "M. Izdihar Alwin", "univ" => $univ, "asal" => "Kupang");
-    $nando = array("foto" => "images/nando.jpeg", "name" => "Muhammad Alfyando", "univ" => $univ, "asal" => "Nganjuk");
-    $indra = array("foto" => "images/indra.jpeg", "name" => "Indra Arsy Kaloka", "univ" => "UNTAG Surabaya", "asal" => "Sidoarjo");
-    $diva = array("foto" => "images/diva.jpg", "name" => "Fatwa Zuhri D. P.", "univ" => $univ, "asal" => "Lamongan");
+    $sqlCreativeSkill = "SELECT * FROM skill";
+    $resultCreativeSkill = $conn->query($sqlCreativeSkill);
 ?>

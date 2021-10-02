@@ -374,7 +374,7 @@ section .title::after{
 .skills-content .right .php::before{
     width: 80%;
 }
-.skills-content .right .mysql::before{
+.skills-content .right .golang::before{
     width: 30%;
 }
 
