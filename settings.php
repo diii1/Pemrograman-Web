@@ -3,9 +3,9 @@
     $title = "19081010010 | Raviy Bayu Setiaji";
 
     $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "pemweb";
+    $username = "dev_web";
+    $password = "masukaja12";
+    $dbname = "dev_web";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
