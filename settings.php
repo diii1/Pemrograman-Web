@@ -1,19 +1,7 @@
 <?php
+    include("dbConn.php");
     // title page
     $title = "19081010010 | Raviy Bayu Setiaji";
-
-    $servername = "localhost";
-    $username = "dev_web";
-    $password = "masukaja12";
-    $dbname = "dev_web";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
 
     $sqlBiodata = "SELECT * FROM biodata WHERE id=1";
     $resultBiodata = $conn->query($sqlBiodata);
@@ -55,4 +43,6 @@
 
     $sqlCreativeSkill = "SELECT * FROM skill";
     $resultCreativeSkill = $conn->query($sqlCreativeSkill);
+
+    $conn->close();
 ?>
