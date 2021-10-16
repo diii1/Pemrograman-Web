@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Table - Biodata Table</title>
+        <title>Table - Skill Table</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -126,15 +126,15 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Biodata Table</h1>
+                        <h1 class="mt-4">Skill Table</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="<?php echo 'index.php';?>">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Biodata Table</li>
+                            <li class="breadcrumb-item active">Skill Table</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Table Biodata
+                                Table Skill
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
