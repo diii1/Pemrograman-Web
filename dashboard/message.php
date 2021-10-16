@@ -47,24 +47,24 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Table</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#biodata" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Biodata Table
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="biodata" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'biodata.php';?>">View Biodata</a>
                                     <a class="nav-link" href="layout-static.html">Add Biodata</a>
                                     <a class="nav-link" href="layout-static.html">Update Biodata</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#skill" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Skill Table
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="skill" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'skill.php';?>">View Skill</a>
                                     <a class="nav-link" href="layout-static.html">Add Skill</a>
@@ -102,7 +102,7 @@
                             </a>
                             <div class="collapse" id="message" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'message.php';?>">View Message</a>
+                                    <a class="nav-link active" href="<?php echo 'message.php';?>">View Message</a>
                                     <a class="nav-link" href="layout-static.html">Add Message</a>
                                     <a class="nav-link" href="layout-static.html">Update Message</a>
                                 </nav>
@@ -122,38 +122,41 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Message Studi
+                                Message
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Email</th>
+                                            <th>Subject</th>
+                                            <th>Message</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM messages";
+                                            $result = mysqli_query(connection(),$query);
+                                        ?>
+                                        <?php while($data = mysqli_fetch_array($result)): ?>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td><?php echo $data['name']; ?></td>
+                                            <td><?php echo $data['email']; ?></td>
+                                            <td><?php echo $data['subject']; ?></td>
+                                            <td><?php echo $data['message']; ?></td>
+                                            <td>
+                                                <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
+                                            </td>
                                         </tr>
+                                        <?php endwhile ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Email</th>
+                                            <th>Subject</th>
+                                            <th>Message</th>
                                         </tr>
                                     </tfoot>
                                 </table>

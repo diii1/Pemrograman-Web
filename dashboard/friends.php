@@ -47,24 +47,24 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Table</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#biodata" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Biodata Table
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="biodata" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'biodata.php';?>">View Biodata</a>
                                     <a class="nav-link" href="layout-static.html">Add Biodata</a>
                                     <a class="nav-link" href="layout-static.html">Update Biodata</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#skill" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Skill Table
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="skill" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'skill.php';?>">View Skill</a>
                                     <a class="nav-link" href="layout-static.html">Add Skill</a>
@@ -102,7 +102,7 @@
                             </a>
                             <div class="collapse" id="teman" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'friends.php';?>">View Friends</a>
+                                    <a class="nav-link active" href="<?php echo 'friends.php';?>">View Friends</a>
                                     <a class="nav-link" href="layout-static.html">Add Friends</a>
                                     <a class="nav-link" href="layout-static.html">Update Friends</a>
                                 </nav>
@@ -131,6 +131,7 @@
                             <li class="breadcrumb-item"><a href="<?php echo 'index.php';?>">Dashboard</a></li>
                             <li class="breadcrumb-item active">Friends Table</li>
                         </ol>
+                        <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-success btn-sm mb-2"> Add Data</a>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -140,32 +141,36 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
+                                            <th>Foto</th>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Universitas</th>
+                                            <th>Kota Asal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM teman";
+                                            $result = mysqli_query(connection(),$query);
+                                        ?>
+                                        <?php while($data = mysqli_fetch_array($result)): ?>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td><?php echo $data['foto']; ?></td>
+                                            <td><?php echo $data['name']; ?></td>
+                                            <td><?php echo $data['universitas']; ?></td>
+                                            <td><?php echo $data['kota_asal']; ?></td>
+                                            <td>
+                                                <a href="<?php echo "update.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-warning btn-sm"> Update</a>
+                                                <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
+                                            </td>
                                         </tr>
+                                        <?php endwhile ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <th>Foto</th>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Universitas</th>
+                                            <th>Kota Asal</th>
                                         </tr>
                                     </tfoot>
                                 </table>
