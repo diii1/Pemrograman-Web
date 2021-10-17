@@ -17,7 +17,7 @@
               $status = 'delete';
             }
             else{
-              $status = 'err';
+              $status = 'errDelete';
             }
   
             //redirect ke halaman lain

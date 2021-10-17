@@ -122,13 +122,17 @@
                         if (@$_GET['status']!==NULL) {
                             $status = $_GET['status'];
                             if ($status=='delete') {
-                                echo '<br><div class="alert alert-success" role="alert">Data Teman berhasil di-Delete</div>';
+                                echo '<br><div class="alert alert-success" role="alert">Data Friends berhasil di-Delete</div>';
                             }else if ($status=='create') {
-                                echo '<br><div class="alert alert-success" role="alert">Data Teman berhasil di-Tambahkan</div>';
+                                echo '<br><div class="alert alert-success" role="alert">Data Friends berhasil di-Tambahkan</div>';
                             }else if ($status=='update') {
-                                echo '<br><div class="alert alert-success" role="alert">Data Teman berhasil di-Update</div>';
-                            }else if($status=='err'){
-                                echo '<br><div class="alert alert-danger" role="alert">Data Teman gagal di-Delete</div>';
+                                echo '<br><div class="alert alert-success" role="alert">Data Friends berhasil di-Update</div>';
+                            }else if($status=='errCreate'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Friends gagal di-Tambahkan</div>';
+                            }else if($status=='errUpdate'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Friends gagal di-Update</div>';
+                            }else if($status=='errDelete'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Friends gagal di-Delete</div>';
                             }
                         }
                     ?>

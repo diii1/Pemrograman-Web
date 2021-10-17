@@ -27,7 +27,7 @@
             $status = 'update';
         }
         else{
-            $status = 'err';
+            $status = 'errUpdate';
         }
         header('Location: ../../description.php?status='.$status);
         die();
@@ -42,7 +42,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Table - Friends Table</title>
+        <title>Update Data Description</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../../css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -50,7 +50,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="<?php echo 'index.php';?>">Dashboard Profile</a>
+            <a class="navbar-brand ps-3" href="<?php echo '../../index.php';?>">Dashboard Profile</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -86,9 +86,8 @@
                             </a>
                             <div class="collapse" id="biodata" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'biodata.php';?>">View Biodata</a>
-                                    <a class="nav-link" href="layout-static.html">Add Biodata</a>
-                                    <a class="nav-link" href="layout-static.html">Update Biodata</a>
+                                    <a class="nav-link" href="<?php echo '../../biodata.php';?>">View Biodata</a>
+                                    <a class="nav-link" href="<?php echo '../biodata/create.php';?>">Add Biodata</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#skill" aria-expanded="false" aria-controls="collapseLayouts">
@@ -98,9 +97,8 @@
                             </a>
                             <div class="collapse" id="skill" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'skill.php';?>">View Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Add Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Update Skill</a>
+                                    <a class="nav-link" href="<?php echo '../../skill.php';?>">View Skill</a>
+                                    <a class="nav-link" href="<?php echo '../skill/create.php';?>">Add Skill</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="collapseLayouts">
@@ -111,7 +109,7 @@
                             <div class="collapse" id="description" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo '../../description.php';?>">View Description</a>
-                                    <a class="nav-link active" href="<?php echo 'module/description/create.php';?>">Add Description</a>
+                                    <a class="nav-link" href="<?php echo '../description/create.php';?>">Add Description</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#studi" aria-expanded="false" aria-controls="collapseLayouts">
@@ -122,7 +120,7 @@
                             <div class="collapse" id="studi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo '../../studi.php';?>">View Studi</a>
-                                    <a class="nav-link" href="<?php echo 'module/studi/create.php';?>">Add Studi</a>
+                                    <a class="nav-link" href="<?php echo '../studi/create.php';?>">Add Studi</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teman" aria-expanded="false" aria-controls="collapseLayouts">
@@ -133,7 +131,7 @@
                             <div class="collapse" id="teman" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo '../../friends.php';?>">View Friends</a>
-                                    <a class="nav-link" href="<?php echo 'module/friends/create.php';?>">Add Friends</a>
+                                    <a class="nav-link" href="<?php echo '../friends/create.php';?>">Add Friends</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#message" aria-expanded="false" aria-controls="collapseLayouts">

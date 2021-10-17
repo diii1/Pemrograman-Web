@@ -122,13 +122,17 @@
                         if (@$_GET['status']!==NULL) {
                             $status = $_GET['status'];
                             if ($status=='delete') {
-                                echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Delete</div>';
+                                echo '<br><div class="alert alert-success" role="alert">Data Biodata berhasil di-Delete</div>';
                             }else if ($status=='create') {
-                                echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Tambahkan</div>';
+                                echo '<br><div class="alert alert-success" role="alert">Data Biodata berhasil di-Tambahkan</div>';
                             }else if ($status=='update') {
-                                echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Update</div>';
-                            }else if($status=='err'){
-                                echo '<br><div class="alert alert-danger" role="alert">Data Skill gagal di-Delete</div>';
+                                echo '<br><div class="alert alert-success" role="alert">Data Biodata berhasil di-Update</div>';
+                            }else if($status=='errCreate'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Biodata gagal di-Tambahkan</div>';
+                            }else if($status=='errUpdate'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Biodata gagal di-Update</div>';
+                            }else if($status=='errDelete'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Biodata gagal di-Delete</div>';
                             }
                         }
                     ?>

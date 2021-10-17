@@ -127,7 +127,11 @@
                                 echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Tambahkan</div>';
                             }else if ($status=='update') {
                                 echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Update</div>';
-                            }else if($status=='err'){
+                            }else if($status=='errCreate'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Skill gagal di-Tambahkan</div>';
+                            }else if($status=='errUpdate'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Skill gagal di-Update</div>';
+                            }else if($status=='errDelete'){
                                 echo '<br><div class="alert alert-danger" role="alert">Data Skill gagal di-Delete</div>';
                             }
                         }
