@@ -1,39 +1,30 @@
 <?php
-    include ('../../conn.php');
+
+    include('../../conn.php'); 
 
     $status = '';
-    $result = '';
-    $id = $_GET['id'];
-
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        if (isset($_GET['id'])) {
-            //query SQL
-            $query = "SELECT * FROM teman WHERE id = '$id'";
-  
-            //eksekusi query
-            $result = mysqli_query(connection(),$query);
-        }
-    }
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $foto = $_POST['foto'];
+        $profil = $_POST['profil'];
         $name = $_POST['name'];
-        $universitas = $_POST['universitas'];
-        $asal = $_POST['asal'];
+        $shortName = $_POST['shortName'];
+        $email = $_POST['email'];
+        $instagram = $_POST['instagram'];
+        $alamat = $_POST['alamat'];
         //query SQL
-        $sql = "UPDATE teman SET foto='$foto', name='$name', universitas='$universitas', kota_asal='$asal' WHERE id='$id'"; 
+        $query = "INSERT INTO biodata (profil, name, short_name, email, instagram, alamat) VALUES('$profil','$name','$shortName', '$email', '$instagram', '$alamat')"; 
 
         //eksekusi query
-        $result = mysqli_query(connection(),$sql);
+        $result = mysqli_query(connection(),$query);
         if ($result) {
-            $status = 'update';
+            $status = 'create';
         }
         else{
             $status = 'err';
         }
-        header('Location: ../../friends.php?status='.$status);
+        header('Location: ../../biodata.php?status='.$status);
         die();
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -112,9 +103,8 @@
                             </a>
                             <div class="collapse" id="description" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'description.php';?>">View Description</a>
-                                    <a class="nav-link" href="layout-static.html">Add Description</a>
-                                    <a class="nav-link" href="layout-static.html">Update Description</a>
+                                    <a class="nav-link" href="<?php echo '../../description.php';?>">View Description</a>
+                                    <a class="nav-link active" href="<?php echo 'module/description/create.php';?>">Add Description</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#studi" aria-expanded="false" aria-controls="collapseLayouts">
@@ -124,9 +114,8 @@
                             </a>
                             <div class="collapse" id="studi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'studi.php';?>">View Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Add Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Update Studi</a>
+                                    <a class="nav-link" href="<?php echo '../../studi.php';?>">View Studi</a>
+                                    <a class="nav-link" href="<?php echo 'module/studi/create.php';?>">Add Studi</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teman" aria-expanded="false" aria-controls="collapseLayouts">
@@ -157,26 +146,32 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container mt-3">
-                        <h2>Update Data teman</h2>
-                        <form action="" method="POST">
-                            <?php while($data = mysqli_fetch_array($result)): ?>
-                                <div class="mb-3 mt-3">
-                                    <label for="foto">Foto:</label>
-                                    <input type="text" class="form-control" id="foto" placeholder="Enter Directory Path Foto" name="foto" value="<?php echo $data['foto']; ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="name">Name:</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="<?php echo $data['name']; ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="universitas">Universitas:</label>
-                                    <input type="text" class="form-control" id="universitas" placeholder="Enter Name University" name="universitas" value="<?php echo $data['universitas']; ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="asal">Kota Asal:</label>
-                                    <input type="text" class="form-control" id="asal" placeholder="Enter City" name="asal" value="<?php echo $data['kota_asal']; ?>">
-                                </div>
-                            <?php endwhile; ?>
+                        <h2>Tambah Data Biodata</h2>
+                        <form action="create.php" method="POST">
+                            <div class="mb-3">
+                                <label for="profil">Path Foto Profile:</label>
+                                <input type="text" class="form-control" id="profil" placeholder="Enter Path Foto Profile" name="profil">
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="shortName">Short Name:</label>
+                                <input type="text" class="form-control" id="shortName" placeholder="Enter Short Name" name="shortName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email">Email:</label>
+                                <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="instagram">Instagram:</label>
+                                <input type="text" class="form-control" id="instagram" placeholder="Enter Instagram" name="instagram">
+                            </div>
+                            <div class="mb-3">
+                                <label for="alamat">Alamat:</label>
+                                <input type="text" class="form-control" id="alamat" placeholder="Enter Alamat" name="alamat">
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

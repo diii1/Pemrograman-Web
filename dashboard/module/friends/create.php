@@ -113,9 +113,8 @@
                             </a>
                             <div class="collapse" id="studi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'studi.php';?>">View Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Add Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Update Studi</a>
+                                    <a class="nav-link" href="<?php echo '../../studi.php';?>">View Studi</a>
+                                    <a class="nav-link" href="<?php echo 'module/studi/create.php';?>">Add Studi</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teman" aria-expanded="false" aria-controls="collapseLayouts">

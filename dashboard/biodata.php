@@ -125,13 +125,27 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
+                    <?php
+                        if (@$_GET['status']!==NULL) {
+                            $status = $_GET['status'];
+                            if ($status=='delete') {
+                                echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Delete</div>';
+                            }else if ($status=='create') {
+                                echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Tambahkan</div>';
+                            }else if ($status=='update') {
+                                echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Update</div>';
+                            }else if($status=='err'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Skill gagal di-Delete</div>';
+                            }
+                        }
+                    ?>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Biodata Table</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="<?php echo 'index.php';?>">Dashboard</a></li>
                             <li class="breadcrumb-item active">Biodata Table</li>
                         </ol>
-                        <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-success btn-sm mb-2"> Add Data</a>
+                        <a href="<?php echo 'module/biodata/create.php';?>" class="btn btn-outline-success btn-sm mb-2"> Add Data</a>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -164,8 +178,8 @@
                                             <td><?php echo $data['instagram']; ?></td>
                                             <td><?php echo $data['alamat']; ?></td>
                                             <td>
-                                                <a href="<?php echo "update.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-warning btn-sm mb-2"> Update</a>
-                                                <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
+                                                <a href="<?php echo "module/biodata/update.php?id=".$data['id']; ?>" class="btn btn-outline-warning btn-sm mb-2"> Update</a>
+                                                <a href="<?php echo "module/biodata/delete.php?id=".$data['id']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
                                             </td>
                                         </tr>
                                         <?php endwhile ?>

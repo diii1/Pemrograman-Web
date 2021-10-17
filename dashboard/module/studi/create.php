@@ -1,39 +1,28 @@
 <?php
-    include ('../../conn.php');
+
+    include('../../conn.php'); 
 
     $status = '';
-    $result = '';
-    $id = $_GET['id'];
-
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        if (isset($_GET['id'])) {
-            //query SQL
-            $query = "SELECT * FROM teman WHERE id = '$id'";
-  
-            //eksekusi query
-            $result = mysqli_query(connection(),$query);
-        }
-    }
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $foto = $_POST['foto'];
-        $name = $_POST['name'];
-        $universitas = $_POST['universitas'];
-        $asal = $_POST['asal'];
+        $jenjang = $_POST['jenjang'];
+        $tempat = $_POST['tempat'];
+        $waktu = $_POST['waktu'];
+        $tahun = $_POST['tahun'];
         //query SQL
-        $sql = "UPDATE teman SET foto='$foto', name='$name', universitas='$universitas', kota_asal='$asal' WHERE id='$id'"; 
+        $query = "INSERT INTO studi (jenjang, tempat, waktu, tahun_lulus) VALUES('$jenjang','$tempat','$waktu','$tahun')"; 
 
         //eksekusi query
-        $result = mysqli_query(connection(),$sql);
+        $result = mysqli_query(connection(),$query);
         if ($result) {
-            $status = 'update';
+            $status = 'create';
         }
         else{
             $status = 'err';
         }
-        header('Location: ../../friends.php?status='.$status);
+        header('Location: ../../studi.php?status='.$status);
         die();
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +33,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Table - Friends Table</title>
+        <title>Table - Skill Table</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../../css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -100,9 +89,8 @@
                             </a>
                             <div class="collapse" id="skill" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'skill.php';?>">View Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Add Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Update Skill</a>
+                                    <a class="nav-link" href="<?php echo '../../skill.php';?>">View Skill</a>
+                                    <a class="nav-link" href="<?php echo 'module/skill/create.php';?>">Add Skill</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="collapseLayouts">
@@ -124,9 +112,8 @@
                             </a>
                             <div class="collapse" id="studi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'studi.php';?>">View Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Add Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Update Studi</a>
+                                    <a class="nav-link" href="<?php echo '../../studi.php';?>">View Studi</a>
+                                    <a class="nav-link active" href="<?php echo 'module/studi/create.php';?>">Add Studi</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teman" aria-expanded="false" aria-controls="collapseLayouts">
@@ -157,26 +144,24 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container mt-3">
-                        <h2>Update Data teman</h2>
-                        <form action="" method="POST">
-                            <?php while($data = mysqli_fetch_array($result)): ?>
-                                <div class="mb-3 mt-3">
-                                    <label for="foto">Foto:</label>
-                                    <input type="text" class="form-control" id="foto" placeholder="Enter Directory Path Foto" name="foto" value="<?php echo $data['foto']; ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="name">Name:</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="<?php echo $data['name']; ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="universitas">Universitas:</label>
-                                    <input type="text" class="form-control" id="universitas" placeholder="Enter Name University" name="universitas" value="<?php echo $data['universitas']; ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="asal">Kota Asal:</label>
-                                    <input type="text" class="form-control" id="asal" placeholder="Enter City" name="asal" value="<?php echo $data['kota_asal']; ?>">
-                                </div>
-                            <?php endwhile; ?>
+                        <h2>Tambah Data Studi</h2>
+                        <form action="create.php" method="POST">
+                            <div class="mb-3">
+                                <label for="jenjang">Jenjang Studi:</label>
+                                <input type="text" class="form-control" id="jenjang" placeholder="Enter Jenjang Studi" name="jenjang">
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="tempat">Tempat:</label>
+                                <input type="text" class="form-control" id="tempat" placeholder="Enter Tempat Studi" name="tempat">
+                            </div>
+                            <div class="mb-3">
+                                <label for="waktu">Waktu Studi:</label>
+                                <input type="text" class="form-control" id="waktu" placeholder="Enter Waktu Studi" name="waktu">
+                            </div>
+                            <div class="mb-3">
+                                <label for="tahun">Tahun Lulus:</label>
+                                <input type="text" class="form-control" id="tahun" placeholder="Enter Tahun Lulus" name="tahun">
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
