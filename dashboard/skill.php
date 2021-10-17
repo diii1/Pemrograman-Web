@@ -55,8 +55,7 @@
                             <div class="collapse" id="biodata" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'biodata.php';?>">View Biodata</a>
-                                    <a class="nav-link" href="layout-static.html">Add Biodata</a>
-                                    <a class="nav-link" href="layout-static.html">Update Biodata</a>
+                                    <a class="nav-link" href="<?php echo 'module/biodata/create.php';?>">Add Biodata</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#skill" aria-expanded="false" aria-controls="collapseLayouts">
@@ -78,8 +77,7 @@
                             <div class="collapse" id="description" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'description.php';?>">View Description</a>
-                                    <a class="nav-link" href="layout-static.html">Add Description</a>
-                                    <a class="nav-link" href="layout-static.html">Update Description</a>
+                                    <a class="nav-link" href="<?php echo 'module/description/create.php';?>">Add Description</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#studi" aria-expanded="false" aria-controls="collapseLayouts">
@@ -90,8 +88,7 @@
                             <div class="collapse" id="studi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'studi.php';?>">View Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Add Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Update Studi</a>
+                                    <a class="nav-link" href="<?php echo 'module/studi/create.php';?>">Add Studi</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teman" aria-expanded="false" aria-controls="collapseLayouts">
@@ -113,8 +110,6 @@
                             <div class="collapse" id="message" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'message.php';?>">View Message</a>
-                                    <a class="nav-link" href="layout-static.html">Add Message</a>
-                                    <a class="nav-link" href="layout-static.html">Update Message</a>
                                 </nav>
                             </div>
                         </div>
