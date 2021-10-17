@@ -55,8 +55,7 @@
                             <div class="collapse" id="biodata" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'biodata.php';?>">View Biodata</a>
-                                    <a class="nav-link" href="layout-static.html">Add Biodata</a>
-                                    <a class="nav-link" href="layout-static.html">Update Biodata</a>
+                                    <a class="nav-link" href="<?php echo 'module/biodata/create.php';?>">Add Biodata</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#skill" aria-expanded="false" aria-controls="collapseLayouts">
@@ -67,8 +66,7 @@
                             <div class="collapse" id="skill" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'skill.php';?>">View Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Add Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Update Skill</a>
+                                    <a class="nav-link" href="<?php echo 'module/skill/create.php';?>">Add Skill</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="collapseLayouts">
@@ -79,8 +77,7 @@
                             <div class="collapse" id="description" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link active" href="<?php echo 'description.php';?>">View Description</a>
-                                    <a class="nav-link" href="layout-static.html">Add Description</a>
-                                    <a class="nav-link" href="layout-static.html">Update Description</a>
+                                    <a class="nav-link" href="<?php echo 'module/description/create.php';?>">Add Description</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#studi" aria-expanded="false" aria-controls="collapseLayouts">
@@ -91,8 +88,7 @@
                             <div class="collapse" id="studi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'studi.php';?>">View Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Add Studi</a>
-                                    <a class="nav-link" href="layout-static.html">Update Studi</a>
+                                    <a class="nav-link" href="<?php echo 'module/studi/create.php';?>">Add Studi</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teman" aria-expanded="false" aria-controls="collapseLayouts">
@@ -103,8 +99,7 @@
                             <div class="collapse" id="teman" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'friends.php';?>">View Friends</a>
-                                    <a class="nav-link" href="layout-static.html">Add Friends</a>
-                                    <a class="nav-link" href="layout-static.html">Update Friends</a>
+                                    <a class="nav-link" href="<?php echo 'module/friends/create.php';?>">Add Friends</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#message" aria-expanded="false" aria-controls="collapseLayouts">
@@ -115,8 +110,6 @@
                             <div class="collapse" id="message" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'message.php';?>">View Message</a>
-                                    <a class="nav-link" href="layout-static.html">Add Message</a>
-                                    <a class="nav-link" href="layout-static.html">Update Message</a>
                                 </nav>
                             </div>
                         </div>
@@ -125,13 +118,31 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
+                    <?php
+                        if (@$_GET['status']!==NULL) {
+                            $status = $_GET['status'];
+                            if ($status=='delete') {
+                                echo '<br><div class="alert alert-success" role="alert">Data Description berhasil di-Delete</div>';
+                            }else if ($status=='create') {
+                                echo '<br><div class="alert alert-success" role="alert">Data Description berhasil di-Tambahkan</div>';
+                            }else if ($status=='update') {
+                                echo '<br><div class="alert alert-success" role="alert">Data Description berhasil di-Update</div>';
+                            }else if($status=='errCreate'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Description gagal di-Tambahkan</div>';
+                            }else if($status=='errUpdate'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Description gagal di-Update</div>';
+                            }else if($status=='errDelete'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Description gagal di-Delete</div>';
+                            }
+                        }
+                    ?>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Description Table</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="<?php echo 'index.php';?>">Dashboard</a></li>
                             <li class="breadcrumb-item active">Description Table</li>
                         </ol>
-                        <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-success btn-sm mb-2"> Add Data</a>
+                        <a href="<?php echo 'module/description/create.php';?>" class="btn btn-outline-success btn-sm mb-2"> Add Data</a>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -156,8 +167,8 @@
                                             <td><?php echo $data['name']; ?></td>
                                             <td><?php echo $data['description']; ?></td>
                                             <td>
-                                                <a href="<?php echo "update.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-warning btn-sm mb-2"> Update</a>
-                                                <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
+                                                <a href="<?php echo "module/description/update.php?id=".$data['id']; ?>" class="btn btn-outline-warning btn-sm mb-2"> Update</a>
+                                                <a href="<?php echo "module/description/delete.php?id=".$data['id']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
                                             </td>
                                         </tr>
                                         <?php endwhile ?>

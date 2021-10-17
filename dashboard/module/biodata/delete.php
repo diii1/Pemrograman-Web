@@ -8,7 +8,7 @@
         if (isset($_GET['id'])) {
             //query SQL
             $id = $_GET['id'];
-            $query = "DELETE FROM skill WHERE id = '$id'"; 
+            $query = "DELETE FROM biodata WHERE id = '$id'"; 
   
             //eksekusi query
             $result = mysqli_query(connection(),$query);
@@ -21,7 +21,7 @@
             }
   
             //redirect ke halaman lain
-            header('Location: ../../skill.php?status='.$status);
+            header('Location: ../../biodata.php?status='.$status);
             die();
         }  
     }

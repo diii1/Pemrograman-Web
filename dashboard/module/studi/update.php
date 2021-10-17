@@ -8,7 +8,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         if (isset($_GET['id'])) {
             //query SQL
-            $query = "SELECT * FROM skill WHERE id = '$id'";
+            $query = "SELECT * FROM studi WHERE id = '$id'";
             
             //eksekusi query
             $result = mysqli_query(connection(),$query);
@@ -16,11 +16,12 @@
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $name = $_POST['name'];
-        $percent = $_POST['percent'];
-        $class = $_POST['class'];
+        $jenjang = $_POST['jenjang'];
+        $tempat = $_POST['tempat'];
+        $waktu = $_POST['waktu'];
+        $tahun = $_POST['tahun'];
         //query SQL
-        $sql = "UPDATE skill SET name='$name', persen_val='$percent', class='$class' WHERE id='$id'"; 
+        $sql = "UPDATE studi SET jenjang='$jenjang', tempat='$tempat', waktu='$waktu', tahun_lulus='$tahun' WHERE id='$id'"; 
         //eksekusi query
         $result = mysqli_query(connection(),$sql);
         if ($result) {
@@ -29,7 +30,7 @@
         else{
             $status = 'errUpdate';
         }
-        header('Location: ../../skill.php?status='.$status);
+        header('Location: ../../studi.php?status='.$status);
         die();
     }
 ?>
@@ -42,7 +43,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Update Data Skill</title>
+        <title>Update Studi Data</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../../css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -151,20 +152,24 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container mt-3">
-                        <h2>Update Data Skill</h2>
+                        <h2>Update Data Studi</h2>
                         <form action="" method="POST">
                             <?php while($data = mysqli_fetch_array($result)): ?>
                                 <div class="mb-3">
-                                    <label for="name">Name:</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="<?php echo $data['name']; ?>">
+                                    <label for="jenjang">Jenjang Studi:</label>
+                                    <input type="text" class="form-control" id="jenjang" placeholder="Enter Jenjang Studi" name="jenjang" value="<?php echo $data['jenjang']; ?>">
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="percent">Percentage:</label>
-                                    <input type="text" class="form-control" id="percent" placeholder="Enter Percentage" name="percent" value="<?php echo $data['persen_val']; ?>">
+                                    <label for="tempat">Tempat:</label>
+                                    <input type="text" class="form-control" id="tempat" placeholder="Enter Tempat Studi" name="tempat" value="<?php echo $data['tempat']; ?>">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="class">Class:</label>
-                                    <input type="text" class="form-control" id="class" placeholder="Enter Name Class" name="class" value="<?php echo $data['class']; ?>">
+                                    <label for="waktu">Waktu Studi:</label>
+                                    <input type="text" class="form-control" id="waktu" placeholder="Enter Waktu Studi" name="waktu" value="<?php echo $data['waktu']; ?>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tahun">Tahun Lulus:</label>
+                                    <input type="text" class="form-control" id="tahun" placeholder="Enter Tahun Lulus" name="tahun" value="<?php echo $data['tahun_lulus']; ?>">
                                 </div>
                             <?php endwhile; ?>
                             <button type="submit" class="btn btn-primary">Submit</button>
