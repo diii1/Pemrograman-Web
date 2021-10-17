@@ -3,11 +3,11 @@
 
     $status = '';
     $result = '';
+    $id = $_GET['id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         if (isset($_GET['id'])) {
             //query SQL
-            $id = $_GET['id'];
             $query = "SELECT * FROM teman WHERE id = '$id'";
   
             //eksekusi query
@@ -22,6 +22,7 @@
         $asal = $_POST['asal'];
         //query SQL
         $sql = "UPDATE teman SET foto='$foto', name='$name', universitas='$universitas', kota_asal='$asal' WHERE id='$id'"; 
+        die($sql);
 
         //eksekusi query
         $result = mysqli_query(connection(),$sql);
@@ -158,7 +159,7 @@
                 <main>
                     <div class="container mt-3">
                         <h2>Update Data teman</h2>
-                        <form action="update.php" method="POST">
+                        <form action="" method="POST">
                             <?php while($data = mysqli_fetch_array($result)): ?>
                                 <div class="mb-3 mt-3">
                                     <label for="foto">Foto:</label>

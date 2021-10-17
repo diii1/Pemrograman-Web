@@ -3,13 +3,13 @@
 
     $status = '';
     $result = '';
-
+    $id = $_GET['id'];
+    
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         if (isset($_GET['id'])) {
             //query SQL
-            $id = $_GET['id'];
             $query = "SELECT * FROM skill WHERE id = '$id'";
-  
+            
             //eksekusi query
             $result = mysqli_query(connection(),$query);
         }
@@ -21,7 +21,6 @@
         $class = $_POST['class'];
         //query SQL
         $sql = "UPDATE skill SET name='$name', persen_val='$percent', class='$class' WHERE id='$id'"; 
-
         //eksekusi query
         $result = mysqli_query(connection(),$sql);
         if ($result) {
@@ -100,7 +99,7 @@
                             <div class="collapse" id="skill" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo '../../skill.php';?>">View Skill</a>
-                                    <a class="nav-link active" href="<?php echo 'module/skill/create.php';?>">Add Skill</a>
+                                    <a class="nav-link" href="<?php echo 'module/skill/create.php';?>">Add Skill</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="collapseLayouts">
@@ -156,7 +155,7 @@
                 <main>
                     <div class="container mt-3">
                         <h2>Update Data Skill</h2>
-                        <form action="update.php" method="POST">
+                        <form action="" method="POST">
                             <?php while($data = mysqli_fetch_array($result)): ?>
                                 <div class="mb-3">
                                     <label for="name">Name:</label>
