@@ -67,8 +67,7 @@
                             <div class="collapse" id="skill" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link active" href="<?php echo 'skill.php';?>">View Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Add Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Update Skill</a>
+                                    <a class="nav-link" href="<?php echo 'module/skill/create.php';?>">Add Skill</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="collapseLayouts">
@@ -103,8 +102,7 @@
                             <div class="collapse" id="teman" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo 'friends.php';?>">View Friends</a>
-                                    <a class="nav-link" href="layout-static.html">Add Friends</a>
-                                    <a class="nav-link" href="layout-static.html">Update Friends</a>
+                                    <a class="nav-link" href="<?php echo 'module/friends/create.php';?>">Add Friends</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#message" aria-expanded="false" aria-controls="collapseLayouts">
@@ -125,13 +123,27 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
+                    <?php
+                        if (@$_GET['status']!==NULL) {
+                            $status = $_GET['status'];
+                            if ($status=='delete') {
+                                echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Delete</div>';
+                            }else if ($status=='create') {
+                                echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Tambahkan</div>';
+                            }else if ($status=='update') {
+                                echo '<br><div class="alert alert-success" role="alert">Data Skill berhasil di-Update</div>';
+                            }else if($status=='err'){
+                                echo '<br><div class="alert alert-danger" role="alert">Data Skill gagal di-Delete</div>';
+                            }
+                        }
+                    ?>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Skill Table</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="<?php echo 'index.php';?>">Dashboard</a></li>
                             <li class="breadcrumb-item active">Skill Table</li>
                         </ol>
-                        <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-success btn-sm mb-2"> Add Data</a>
+                        <a href="<?php echo 'module/skill/create.php';?>" class="btn btn-outline-success btn-sm mb-2"> Add Data</a>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -158,8 +170,8 @@
                                             <td><?php echo $data['persen_val']; ?></td>
                                             <td><?php echo $data['class']; ?></td>
                                             <td>
-                                                <a href="<?php echo "update.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-warning btn-sm"> Update</a>
-                                                <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
+                                                <a href="<?php echo "module/skill/update.php?id=".$data['id']; ?>" class="btn btn-outline-warning btn-sm"> Update</a>
+                                                <a href="<?php echo "module/skill/delete.php?id=".$data['id']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
                                             </td>
                                         </tr>
                                         <?php endwhile ?>

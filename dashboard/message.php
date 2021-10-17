@@ -95,6 +95,18 @@
                                     <a class="nav-link" href="layout-static.html">Update Studi</a>
                                 </nav>
                             </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teman" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Friends Table
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="teman" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="<?php echo 'friends.php';?>">View Friends</a>
+                                    <a class="nav-link" href="layout-static.html">Add Friends</a>
+                                    <a class="nav-link" href="layout-static.html">Update Friends</a>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#message" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Message Table
@@ -103,8 +115,6 @@
                             <div class="collapse" id="message" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link active" href="<?php echo 'message.php';?>">View Message</a>
-                                    <a class="nav-link" href="layout-static.html">Add Message</a>
-                                    <a class="nav-link" href="layout-static.html">Update Message</a>
                                 </nav>
                             </div>
                         </div>
@@ -113,6 +123,18 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
+                    <?php
+                        if (@$_GET['status']!==NULL) {
+                        $status = $_GET['status'];
+                        if ($status=='ok') {
+                            echo '<br><div class="alert alert-success" role="alert">Data Message berhasil di-Delete</div>';
+                        }
+                        elseif($status=='err'){
+                            echo '<br><div class="alert alert-danger" role="alert">Data Message gagal di-Delete</div>';
+                        }
+
+                        }
+                    ?>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Message Table</h1>
                         <ol class="breadcrumb mb-4">
@@ -128,10 +150,12 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Subject</th>
                                             <th>Message</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -141,12 +165,13 @@
                                         ?>
                                         <?php while($data = mysqli_fetch_array($result)): ?>
                                         <tr>
+                                            <td><?php echo $data['id']; ?></td>
                                             <td><?php echo $data['name']; ?></td>
                                             <td><?php echo $data['email']; ?></td>
                                             <td><?php echo $data['subject']; ?></td>
                                             <td><?php echo $data['message']; ?></td>
                                             <td>
-                                                <a href="<?php echo "delete.php?nrp=".$data['nrp']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
+                                                <a href="<?php echo "module/message/delete.php?id=".$data['id']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
                                             </td>
                                         </tr>
                                         <?php endwhile ?>
@@ -157,6 +182,7 @@
                                             <th>Email</th>
                                             <th>Subject</th>
                                             <th>Message</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                 </table>

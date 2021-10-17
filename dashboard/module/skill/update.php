@@ -1,5 +1,38 @@
 <?php
-    include('conn.php');
+    include ('../../conn.php');
+
+    $status = '';
+    $result = '';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if (isset($_GET['id'])) {
+            //query SQL
+            $id = $_GET['id'];
+            $query = "SELECT * FROM skill WHERE id = '$id'";
+  
+            //eksekusi query
+            $result = mysqli_query(connection(),$query);
+        }
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = $_POST['name'];
+        $percent = $_POST['percent'];
+        $class = $_POST['class'];
+        //query SQL
+        $sql = "UPDATE skill SET name='$name', persen_val='$percent', class='$class' WHERE id='$id'"; 
+
+        //eksekusi query
+        $result = mysqli_query(connection(),$sql);
+        if ($result) {
+            $status = 'update';
+        }
+        else{
+            $status = 'err';
+        }
+        header('Location: ../../skill.php?status='.$status);
+        die();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -10,9 +43,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Table - Friends Table</title>
+        <title>Table - Skill Table</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../../css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -66,9 +99,8 @@
                             </a>
                             <div class="collapse" id="skill" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'skill.php';?>">View Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Add Skill</a>
-                                    <a class="nav-link" href="layout-static.html">Update Skill</a>
+                                    <a class="nav-link" href="<?php echo '../../skill.php';?>">View Skill</a>
+                                    <a class="nav-link active" href="<?php echo 'module/skill/create.php';?>">Add Skill</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="collapseLayouts">
@@ -102,7 +134,7 @@
                             </a>
                             <div class="collapse" id="teman" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link active" href="<?php echo 'friends.php';?>">View Friends</a>
+                                    <a class="nav-link" href="<?php echo '../../friends.php';?>">View Friends</a>
                                     <a class="nav-link" href="<?php echo 'module/friends/create.php';?>">Add Friends</a>
                                 </nav>
                             </div>
@@ -113,7 +145,7 @@
                             </a>
                             <div class="collapse" id="message" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo 'message.php';?>">View Message</a>
+                                    <a class="nav-link" href="<?php echo '../../message.php';?>">View Message</a>
                                 </nav>
                             </div>
                         </div>
@@ -122,75 +154,25 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <?php
-                        if (@$_GET['status']!==NULL) {
-                            $status = $_GET['status'];
-                            if ($status=='delete') {
-                                echo '<br><div class="alert alert-success" role="alert">Data Teman berhasil di-Delete</div>';
-                            }else if ($status=='create') {
-                                echo '<br><div class="alert alert-success" role="alert">Data Teman berhasil di-Tambahkan</div>';
-                            }else if ($status=='update') {
-                                echo '<br><div class="alert alert-success" role="alert">Data Teman berhasil di-Update</div>';
-                            }else if($status=='err'){
-                                echo '<br><div class="alert alert-danger" role="alert">Data Teman gagal di-Delete</div>';
-                            }
-                        }
-                    ?>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Friends Table</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="<?php echo 'index.php';?>">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Friends Table</li>
-                        </ol>
-                        <a href="<?php echo 'module/friends/create.php';?>" class="btn btn-outline-success btn-sm mb-2"> Add Data</a>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Table Friends
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Foto</th>
-                                            <th>Name</th>
-                                            <th>Universitas</th>
-                                            <th>Kota Asal</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                            $query = "SELECT * FROM teman";
-                                            $result = mysqli_query(connection(),$query);
-                                        ?>
-                                        <?php while($data = mysqli_fetch_array($result)): ?>
-                                        <tr>
-                                            <td><?php echo $data['id']; ?></td>
-                                            <td><?php echo $data['foto']; ?></td>
-                                            <td><?php echo $data['name']; ?></td>
-                                            <td><?php echo $data['universitas']; ?></td>
-                                            <td><?php echo $data['kota_asal']; ?></td>
-                                            <td>
-                                                <a href="<?php echo "module/friends/update.php?id=".$data['id']; ?>" class="btn btn-outline-warning btn-sm"> Update</a>
-                                                <a href="<?php echo "module/friends/delete.php?id=".$data['id']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
-                                            </td>
-                                        </tr>
-                                        <?php endwhile ?>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Foto</th>
-                                            <th>Name</th>
-                                            <th>Universitas</th>
-                                            <th>Kota Asal</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="container mt-3">
+                        <h2>Update Data Skill</h2>
+                        <form action="update.php" method="POST">
+                            <?php while($data = mysqli_fetch_array($result)): ?>
+                                <div class="mb-3">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="<?php echo $data['name']; ?>">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label for="percent">Percentage:</label>
+                                    <input type="text" class="form-control" id="percent" placeholder="Enter Percentage" name="percent" value="<?php echo $data['persen_val']; ?>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="class">Class:</label>
+                                    <input type="text" class="form-control" id="class" placeholder="Enter Name Class" name="class" value="<?php echo $data['class']; ?>">
+                                </div>
+                            <?php endwhile; ?>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -208,8 +190,8 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="../../js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="../../js/datatables-simple-demo.js"></script>
     </body>
 </html>
