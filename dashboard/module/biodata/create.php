@@ -9,7 +9,12 @@
         $shortName = $_POST['shortName'];
         $email = $_POST['email'];
         $instagram = $_POST['instagram'];
-        $alamat = $_POST['alamat'];
+        // $alamat = $_POST['alamat'];
+        $negara = $_POST['alamat-negara'];
+        $provinsi = $_POST['alamat-provinsi'];
+        $kota = $_POST['alamat-kota'];
+        $desa = $_POST['alamat-desa'];
+        $alamat = "$desa&nbsp;$kota&nbsp;$provinsi&nbsp;$negara";        
         //query SQL
         $query = "INSERT INTO biodata (profil, name, short_name, email, instagram, alamat) VALUES('$profil','$name','$shortName', '$email', '$instagram', '$alamat')"; 
 
@@ -168,7 +173,38 @@
                             </div>
                             <div class="mb-3">
                                 <label for="alamat">Alamat:</label>
-                                <input type="text" class="form-control" id="alamat" placeholder="Enter Alamat" name="alamat">
+                                <!-- <input type="text" class="form-control" id="alamat" placeholder="Enter Alamat" name="alamat"> -->
+                                <select class="form-select form-select-sm select-alamat" name="alamat-negara" aria-label=".form-select-sm example">
+                                    <option selected>Pilih Negara</option>
+                                    <?php 
+                                        $negara = "SELECT * FROM m_negara";
+                                        $resultNegara = mysqli_query(connection(),$negara);
+                                    ?>
+                                    <?php while($dataNegara = mysqli_fetch_array($resultNegara)): ?>
+                                        <option value="<?php echo $dataNegara['content']; ?>"><?php echo $dataNegara['content']; ?></option>
+                                    <?php endwhile ?>
+                                </select>
+                                <select class="form-select form-select-sm select-alamat" name="alamat-provinsi" aria-label=".form-select-sm example">
+                                    <option selected>Pilih Provinsi</option>
+                                    <?php 
+                                        $provinsi = "SELECT * FROM m_propinsi";
+                                        $resultProvinsi = mysqli_query(connection(),$provinsi);
+                                    ?>
+                                    <?php while($dataProvinsi = mysqli_fetch_array($resultProvinsi)): ?>
+                                        <option value="<?php echo $dataProvinsi['content']; ?>"><?php echo $dataProvinsi['content']; ?></option>
+                                    <?php endwhile ?>
+                                </select>
+                                <select class="form-select form-select-sm select-alamat" name="alamat-kota"  aria-label=".form-select-sm example">
+                                    <option selected>Pilih Kab/Kota</option>
+                                    <?php 
+                                        $kota = "SELECT * FROM m_kota";
+                                        $resultKota = mysqli_query(connection(),$kota);
+                                    ?>
+                                    <?php while($dataKota = mysqli_fetch_array($resultKota)): ?>
+                                        <option value="<?php echo $dataKota['content']; ?>"><?php echo $dataKota['content']; ?></option>
+                                    <?php endwhile ?>
+                                </select>
+                                <input type="text" name="alamat-desa" id="desa" class="input-desa" />
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
