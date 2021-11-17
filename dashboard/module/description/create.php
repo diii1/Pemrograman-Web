@@ -76,7 +76,7 @@
                             <div class="collapse" id="biodata" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo '../../biodata.php';?>">View Biodata</a>
-                                    <a class="nav-link" href="<?php echo 'module/biodata/create.php';?>">Add Biodata</a>
+                                    <a class="nav-link active" href="<?php echo '../../module/biodata/create.php';?>">Add Biodata</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#skill" aria-expanded="false" aria-controls="collapseLayouts">
@@ -87,7 +87,7 @@
                             <div class="collapse" id="skill" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo '../../skill.php';?>">View Skill</a>
-                                    <a class="nav-link" href="<?php echo 'module/skill/create.php';?>">Add Skill</a>
+                                    <a class="nav-link" href="<?php echo '../../module/skill/create.php';?>">Add Skill</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="collapseLayouts">
@@ -98,7 +98,7 @@
                             <div class="collapse" id="description" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo '../../description.php';?>">View Description</a>
-                                    <a class="nav-link active" href="<?php echo 'module/description/create.php';?>">Add Description</a>
+                                    <a class="nav-link" href="<?php echo 'module/description/create.php';?>">Add Description</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#studi" aria-expanded="false" aria-controls="collapseLayouts">
@@ -109,7 +109,7 @@
                             <div class="collapse" id="studi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo '../../studi.php';?>">View Studi</a>
-                                    <a class="nav-link" href="<?php echo 'module/studi/create.php';?>">Add Studi</a>
+                                    <a class="nav-link" href="<?php echo '../../module/studi/create.php';?>">Add Studi</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teman" aria-expanded="false" aria-controls="collapseLayouts">
@@ -120,7 +120,7 @@
                             <div class="collapse" id="teman" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo '../../friends.php';?>">View Friends</a>
-                                    <a class="nav-link" href="<?php echo 'module/friends/create.php';?>">Add Friends</a>
+                                    <a class="nav-link" href="<?php echo '../../module/friends/create.php';?>">Add Friends</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#message" aria-expanded="false" aria-controls="collapseLayouts">

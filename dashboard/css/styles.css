@@ -11688,9 +11688,17 @@ body {
 }
 
 .select-alamat{
-  width: 75%;
+  width: 20%;
+  float: left;
 }
 
 .input-desa{
-  width: 100%;
+  width: 36%;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  /* float: left; */
+}
+
+.label-alamat{
+  display: block;
 }
